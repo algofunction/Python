@@ -1,1 +1,12 @@
+"""
+Titre : Analysez les ventes d'une librairie avec Python
 
+[Evaluation] Présentation des livrables :
+- Analyses des indicateurs de ventes : les chiffres clés, KPI, graphiques générés, etc. 
+- Analyse des corrélations
+
+Compétences évaluées :
+- Réaliser un test statistique
+- Réaliser une analyse bivariée pour interpréter des données
+- Analyser des séries temporelles
+"""
