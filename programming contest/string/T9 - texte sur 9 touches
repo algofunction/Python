@@ -2,9 +2,34 @@
 entrée : 2665687
 sortie : bonjour
 
+
 Application : 
-Les téléphones portables à touches proposent un mode de saisie (appelé T9) où les 26 lettres de l'alphabet sont réparties sur les touches 2 à 9. 
+Les téléphones portables à touches proposent un mode de saisie (appelé T9) où les 26 lettres de l'alphabet sont réparties sur les touches 2 à 9.
+Pour saisir un mot, il faut saisir la suite de chiffres correspondants.
+Etant donné que plusieurs mots peuvent correspondre à une même séquence, il faut utiliser un dictionnaire pour proposer le mot le plus probable.
+A tout moment le téléphone affiche le préfixe du mot le plus probable correspondant à la séquence de nombres saisis.
+
+
+Définition :
+- La première partie de l'instance du problème est un dictionnaire, composé de couples(m,w).
+"m" est un mot sur l'alphabet de 26 lettres minuscules.
+"w" est un poids d'importance du mot.
+
+- La deuxième partie de l'instance est une série de séquences de chiffres de 2 à 9.
+Pour chaque séquence "s", il faut afficher un mot du dictionnaire de poids maximal.
+Un mot "m" correspond à "s" si "s" est un préfixe de la séquence "t" obtenue de "m" en remplaçant chaque lettre par le chiffre correspondant.
+Par exemple, "bonjour" correspond à 26, mais aussi à 266 ou à 2665687.
+
+
+Algorithme en : O(nk) pour l'initialisation du dictionnaire, et en O(k) pour chaque requête.
+Ici "n" est le nombre de mots dans le dictionnaire et "k" une borne supérieure sur la longueur des mots.
+- Dans un premier temps, on cherche pour chaque préfixe "p" d'un mot du dictionnaire le poids total de tous les mots de préfixe "p".
+Ce poids sera stocké dans un dictionnaire "freq".
+- Dans un second temps, on stocke dans un dictionnaire prop[seq] le préfixe qui sera proposé pour une séquence "seq" donnée.
+Un parcours sur les clés dans freq permet de déterminer le préfixe au plus grand poids.
+Ici l'ingrédient principal est une fonction mot_code qui pour un mot donné fournit la séquence de chiffres correspondante.
 """
+
 t9 = "22233344455566677778889999"
 
 def lettre_chiffre(x):
