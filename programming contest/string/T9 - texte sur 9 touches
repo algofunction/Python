@@ -1,0 +1,39 @@
+"""
+entrée : 2665687
+sortie : bonjour
+
+Application : 
+Les téléphones portables à touches proposent un mode de saisie (appelé T9) où les 26 lettres de l'alphabet sont réparties sur les touches 2 à 9. 
+"""
+t9 = "22233344455566677778889999"
+
+def lettre_chiffre(x):
+  assert 'a' <= x and x <= 'z'
+  return t9[ord(x)-ord('a')]
+
+def mot_code(mot):
+  return ''.join(map(lettre_chiffre, mot))
+
+def predictive_text(dico):
+  freq = {} # freq[p] = poids total des mots de préfixe p
+  for mot, poids in dico:
+    prefixe = ""
+    for x in mot:
+      prefixe += x
+      if prefixe in freq:
+        freq[prefixe] += poids
+      else:
+        freq[prefixe] = poids
+  # prop[s] = préfixe à afficher sur s
+  prop = {}
+  for prefixe in freq:
+    code = mot_code(prefixe)
+    if code not in prop or freq[prop[code]] < freq[prefixe]:
+      prop[code] = prefixe
+  return prop
+
+def propose(prop, seq):
+  if seq in prop:
+    return prop[seq]
+  else:
+    return "None"
