@@ -1,0 +1,38 @@
+"""
+Instructions
+
+Complete the function that takes an array of words.
+
+You must concatenate the nth letter from each word to construct 
+a new word which should be returned as a string, where n is the position of the word in the list.
+
+For example:
+["yoda", "best", "has"]  -->  "yes"
+  ^        ^        ^
+  n=0     n=1     n=2
+
+Note: Test cases contain valid input only - i.e. a string array or an empty array; and each word will have enough letters.
+"""
+
+
+"""
+Sample Tests
+
+import codewars_test as test
+from solution import nth_char
+
+@test.describe("Fixed Tests")
+def fixed_tests():
+    @test.it('Basic Test Cases')
+    def basic_test_cases():
+        test.assert_equals(nth_char(['yoda', 'best', 'has']), 'yes')
+        test.assert_equals(nth_char([]),'')
+        test.assert_equals(nth_char(['X-ray']),'X')
+        test.assert_equals(nth_char(['No','No']),'No')
+        test.assert_equals(nth_char(['Chad','Morocco','India','Algeria','Botswana','Bahamas','Ecuador','Micronesia']),'Codewars')
+"""
+
+
+# Solution
+def nth_char(words):
+	return "".join( word[i] for i,word in enumerate(words))
